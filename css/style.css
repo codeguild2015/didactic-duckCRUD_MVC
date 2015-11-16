@@ -1,17 +1,8 @@
-body {
-        background-color: lightgrey;
-}
-
-.jumbotron {
-    overflow: scroll;
-}
-
+/*Keeps HTML from overflowing when add button is clicked.
+*/
 .panel-none {
     overflow: scroll;
 }
 
-.panel-primary>.panel-heading  {
-    max-width: 100%;
 
-}
 
