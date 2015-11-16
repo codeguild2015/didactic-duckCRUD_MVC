@@ -30,39 +30,40 @@ function Wrapper() {
                     self.currentState[value.gs$cell.col][value.gs$cell.row] = value.gs$cell.$t;
                 }); // End .each
                 callback();
-            })
+            });
         },
 
         appendLine: function(data) {
-            var data = {};
-            $.each(to_post, function(k, v) {
-                data[this.currentState[k]["1"]] = v;
-            })
+            var to_post = {};
+            $.each(data, function(k, v) {
+                to_post[Model.currentState[k]["1"]] = v;
+            });
             var address = "https://sheetsu.com/apis/0a299348";
-            $.post(address, data);
+            $.post(address, to_post, Controller.fetchData);
         },
 
         updateModel: function() {
             // may not be necessary?
         },
         nonFunc : function() {
-            console.log(this.currentState)
             // Does nothing (a dummy callback for the initialization fo the model)
         }
-    }
+    };
 
     var Controller = {
         
         fetchData : function() {
+
             Model.getModel(function() {
-                View.drawTable(Model.currentState)
+                document.getElementById("addrow").disabled = false;
+                View.drawTable(Model.currentState);
             });
         },
 
         updateData : function(pos_str) {
             
             Model.setData(data, position);
-            Model.getModel();
+            Model.getModel();              // BE MORE DEFENSIVE GWRAHHH!
             return Model.currentState;
         },
 
@@ -103,9 +104,11 @@ function Wrapper() {
         rowmax: 0,
         colmax: 0,
         addform: $('#addrowform'),
-        test: {1:{1:'num', 2:'2', 3:'3', 5:'4'}, 2:{1:'alpha', 2:'a', 3:'b'}, 4:{1:'hello', 2:'goodbye', 3:'adios'}},
 
         drawTable: function(data) {
+            this.rowmax = 0;
+            this.colmax = 0;  // WTF DRY MUCH?
+            $("tbody").remove();
             this.getMax(data);
             this.createTable(data);
         },
@@ -113,7 +116,6 @@ function Wrapper() {
 
         getMax: function(data) {
             //cycles through the Model and saves number of rows and columns
-            console.log(data)
             for (var i = 0;i < Object.keys(data).length; i++){
                 if(Object.keys(data)[i] > this.colmax) {
                     this.colmax = Number(Object.keys(data)[i]);
@@ -130,7 +132,6 @@ function Wrapper() {
         },
 
         createTable: function(data) {
-            console.log(data)
             //creates a table with the dimensions of rowmax and colmax
             for (var r = 1; r <= this.rowmax; r++) {
                 var tr = this.table[0].insertRow(-1);
@@ -158,23 +159,27 @@ function Wrapper() {
             for (var c = 1; c <= this.colmax; c++) {
                 var cell = tr.insertCell(-1);
                 cell.setAttribute("id", (c));
-                cell.innerHTML = '<input type="text">'
+                cell.innerHTML = '<input type="text">';
             }
         },
 
         addDone: function() {
+            var sendData = {};
             //creates a Submit button to send to Controller
             var $done = $('<input type="submit" value="Done" id="donebutton" class="btn btn-default" />');
             var text = $(":text");
             $done.appendTo(this.addform); 
-            console.log($(":submit"))
             $(":submit").click(function() {
                 event.preventDefault();
                 for (var k = 0; k < $(":text").length; k++) {
-                    console.log("text is: ", $(":text")[k].value, "col is: ", $(":text")[k].parentNode.getAttribute("id"))
+                    sendData[$(":text")[k].parentNode.getAttribute("id")] = $(":text")[k].value;
+                    $done.remove();
                 }
+            console.log(sendData);
+            Model.appendLine(sendData);
+
             //Controller.something?
-            })                     
+            });                     
         }
     };
 
@@ -184,11 +189,22 @@ function Wrapper() {
 
 
     $("#addrow").click(function() {
-        document.getElementById("addrow").disabled = true
-        View.addNewRow()
-        View.addDone()
-    })
+        document.getElementById("addrow").disabled = true;
+        View.addNewRow();
+        View.addDone();
+    });
 
 }
-
+ 
 Wrapper();
+
+$('#donebutton').on('click', function () {
+    var $btn = $(this).button('loading')
+    // business logic...
+    $btn.button('reset')
+  });
+
+
+
+
+
