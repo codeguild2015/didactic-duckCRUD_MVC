@@ -14,8 +14,8 @@
     <!-- Bootstrap core CSS -->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
+
 
     <!-- Custom styles for this template -->
 
@@ -54,8 +54,9 @@
 
       <div id="actions" class="btn-group btn-group-lg">
 
-        <form class="enter btn-group btn-group-lg" action="#" id="addrowform">
-          <input id="addrow" class="btn btn-default" type="button" value="Add Row">
+        <form class="enter btn-group btn-group-lg" data-loading-text="Loading..."action="#" id="addrowform" autocomplete="off">
+          <input id="addrow" class="btn btn-default"
+           type="button" value="Add Row">
           <div class="btn-group btn-group-lg" role="group">
           </div>
         </form>
