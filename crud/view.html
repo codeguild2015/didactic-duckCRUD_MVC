@@ -1,41 +1,72 @@
-<html>
+ <!DOCTYPE html>
+  <html lang="en">
   <head>
-    <title>JS Array CRUD - http://codeofaninja.com</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-    
-  <body>
-    <div id="inputs">
-      <table id= "myTable">
-        
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+<title>API Project</title>
+
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+<link rel="stylesheet" href="style.css">
+<!-- Custom styles for this template -->
+
+</head>
+
+<body>
+
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="https://docs.google.com/spreadsheets/d/1sYkU_8raV14Bqm33dWcaksC3iMm73DH9OMsooxSMItM/edit#gid=0">Google Spreadsheet</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+
+<!-- Main portion of the page -->
+  <div class="jumbotron">
+    <h1>API Project</h1>
+
+    <div class="panel panel-primary">
+      <!-- Default panel contents -->
+      <div class="panel-heading">Table Data</div>
+      <div class="panel-body">
+      </div>
+
+      <!-- Table -->
+      <table class="table table-bordered table-hover table-condensed">
+
       </table>
     </div>
+    
+        <div id="actions" class="btn-group btn-group-lg">
 
-    <div id="actions">
+          <form class="enter btn-group btn-group-lg" action="#" id="addrowform">
+            <input type="button" class="btn btn-default" id="addrow" value="Add Row">
+            <!-- <input type="submit" class="btn btn-default" value="Done" id="donebutton"> -->
+            <div class="btn-group btn-group-lg" role="group">
+              <!-- <a onClick="history.go(0)" type="button" class="btn btn-default floatright ">Refresh</a> -->
+            </div>
+          </form>
 
-       <form class="enter" action="#">
-      New Entry: <input type="text" name="new">
-      <input type="submit" value="Enter">
-      </form>
 
-      <form class="choose" action="#">
-      Choose Entry: <input type="text" name="new">
-      <input type="submit" value="Choose">
-      </form>
 
-      <form class="delete" action="#">
-      Delete Entry: <input type="text" name="new">
-      <input type="submit" value="Delete">
-      </form>
+        </div>
 
-      <form class="refresh">
-      <input  type="button" onClick="history.go(0)" value="Refresh Page">
-      </form>
 
-    </div>
-    <div id ="results">
-      <div id="results"></div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script type="text/javascript" src="controller.js"></script>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>   
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    <script src="crud_script.js"></script>
   </body>
-</html>
+  </html>

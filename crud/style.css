@@ -30,3 +30,12 @@ table {
     padding-left: 15px;
 
 }
+
+
+.select {
+    background-color: gray
+}
+
+.no-select {
+    background-color: white;
+}
