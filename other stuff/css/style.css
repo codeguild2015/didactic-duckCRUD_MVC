@@ -2,14 +2,14 @@ body {
         background-color: lightgrey;
 }
 
-.jumbotron {
+/*.jumbotron {
     overflow: scroll;
 }
-
-.panel-none {
+*/
+/*.panel-none {
     overflow: scroll;
 }
-
+*/
 .panel-primary>.panel-heading  {
     max-width: 100%;
 
